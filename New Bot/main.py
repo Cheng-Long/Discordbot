@@ -1,10 +1,7 @@
 import os
 import nextcord
 from nextcord.ext import commands
-import json
 
-with open("setting.json" , mode="r" , encoding="utf-8") as file :  #Load JSON file
-    jsondata = json.load(file)
 
 TESTING_GUILD_ID = 691167211548704808  #Test server ID
 
@@ -27,5 +24,5 @@ if __name__ == "__main__" :
 async def on_ready () :
     print (">> Bot is online <<")
 
-
-bot.run (jsondata["Token"])
+TOKEN = os.getenv("Token")
+bot.run (TOKEN)
