@@ -1,7 +1,12 @@
+from audioop import add
 import os
 import nextcord
 from nextcord.ext import commands
+from nextcord.ui import Button, View
+import json
 
+# with open("gift.json", "r") as hentai :
+#     hentaidata = json.load(hentai)
 
 TESTING_GUILD_ID = 691167211548704808  #Test server ID
 
@@ -23,6 +28,20 @@ if __name__ == "__main__" :
 @bot.event 
 async def on_ready () :
     print (">> Bot is online <<")
+
+@bot.slash_command()
+async def giftbox(ctx):  #Hnetai random
+    button = Button(label="Open This", style=nextcord.ButtonStyle.blurple)
+
+    async def button_callback(interaction):
+        interaction.response.defer()
+        await interaction.response.edit_message(content = "**EMPTY INSIDE :P**", view = None)
+
+    button.callback = button_callback
+
+    view = View()
+    view.add_item(button)
+    await ctx.send("🎁", view = view)
 
 TOKEN = os.getenv("Token")
 bot.run (TOKEN)

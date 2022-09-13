@@ -1,5 +1,8 @@
+from datetime import MAXYEAR
+from tkinter.messagebox import NO
 from unicodedata import category
 import nextcord
+from nextcord.ui import Button, View
 from nextcord.ext import commands
 
 
@@ -25,12 +28,55 @@ class Roles(commands.Cog) :
         await user.add_roles (role)
 
     @nextcord.slash_command(description="給予身分組(指定)")
-    async def role_given(self, ctx, rolename):
+    async def role_given(self, ctx, rolename:nextcord.Role):
         user = ctx.user
         role = nextcord.utils.get(ctx.guild.roles , name=rolename)
         await user.add_roles(role)
         await ctx.send(f" **{rolename}** Role Had Successfully Given")
 
+    @nextcord.slash_command()
+    async def button1(self, ctx):
+        button = Button(label="Click Me!", style=nextcord.ButtonStyle.blurple)
+
+        async def button_callback(interaction):
+            await interaction.response.send_message("Hello")
+
+        button.callback = button_callback
+
+        view = View()
+        view.add_item(button)
+        await ctx.send("Hi", view=view)
+
+    @nextcord.slash_command()
+    async def button2(self, ctx):
+        button = Button(label="Click Me!", style=nextcord.ButtonStyle.danger)
+
+        async def button_callback(interaction):
+            await interaction.response.edit_message(content="Hello", view=None)
+
+        button.callback = button_callback
+
+        view = View()
+        view.add_item(button)
+        await ctx.send("Hi", view=view)
+
+    @nextcord.slash_command()
+    async def button3(self, ctx):
+        button = Button(label="Click Me!", style=nextcord.ButtonStyle.gray)
+
+        async def button_callback(interaction):
+            await interaction.response.send_message("Hello", ephemeral = True)
+            button.disabled = True
+
+        button.callback = button_callback
+        
+        view = View()
+        view.add_item(button)
+        await ctx.send("Hi", view=view)
+
+
 
 def setup(bot):
     bot.add_cog(Roles(bot))
+
+
