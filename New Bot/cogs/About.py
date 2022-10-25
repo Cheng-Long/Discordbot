@@ -9,11 +9,7 @@ class About(commands.Cog) :
     def __init__(self , bot) :
         self.bot = bot
 
-    @nextcord.slash_command()
-    async def about_cheng_long (self, ctx) :
-        await ctx.send (f"hey bitch")
-
-    @nextcord.slash_command()
+    @nextcord.slash_command(description="(UNFINISHED)")
     async def editmessage(self, ctx, times):
         message = await ctx.send("test")
         times = int(times)

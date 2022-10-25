@@ -1,8 +1,10 @@
 from unicodedata import category
 import nextcord
 from nextcord.ext import commands
+import json
 
-
+with open("setting.json", "r") as setting :
+    data = json.load(setting)
 
 class Broadcast(commands.Cog) :
 
@@ -11,9 +13,9 @@ class Broadcast(commands.Cog) :
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        parent_channel = 747850006731685919
+        parent_channel = data["parent_channel"]
         url = message.content
-        child_channel = [857832893660135435,859239599792193556]
+        child_channel = data["child_channel"]
         if message.author !=self.bot.user :
             if message.channel.id == parent_channel :
                 if message.content.startswith("https://nhentai"):

@@ -1,6 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 from nextcord.ui import Button, View
+import random as rd
 
 
 
@@ -21,6 +22,12 @@ class URL(commands.Cog) :
     @nextcord.slash_command(name="18comic",description="禁漫天堂6位數轉網址")
     async def comic18 (self, ctx, numbers) :
         await ctx.send (f"https://18comic.vip/album/{numbers}/")
+
+    @nextcord.slash_command()
+    async def book (self, ctx) :
+        my_book = rd.randint(200000, 430000)
+        await ctx.send (my_book)
+
 
     @nextcord.slash_command()
     async def hentai_lobby(self, ctx):

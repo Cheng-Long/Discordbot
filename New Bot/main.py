@@ -23,25 +23,11 @@ for fn in os.listdir("./cogs"):  #Load cogs
 if __name__ == "__main__" :  
     for extension in initial_extensions :
         bot.load_extension(extension)
-        print (extension)
+        print ("Loaded-",extension)
 
 @bot.event 
 async def on_ready () :
     print (">> Bot is online <<")
-
-@bot.slash_command()
-async def giftbox(ctx):  #Hnetai random
-    button = Button(label="Open This", style=nextcord.ButtonStyle.blurple)
-
-    async def button_callback(interaction):
-        interaction.response.defer()
-        await interaction.response.edit_message(content = "**EMPTY INSIDE :P**", view = None)
-
-    button.callback = button_callback
-
-    view = View()
-    view.add_item(button)
-    await ctx.send("🎁", view = view)
 
 TOKEN = os.getenv("Token")
 bot.run (TOKEN)

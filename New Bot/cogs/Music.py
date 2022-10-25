@@ -9,7 +9,7 @@ class Music(commands.Cog) :
     def __init__(self , bot) :
         self.bot = bot
 
-    @nextcord.slash_command()
+    @nextcord.slash_command(description="Muic bot(UNFINISHED)")
     async def play(self, ctx):
         await ctx.send ("Still Making")
         

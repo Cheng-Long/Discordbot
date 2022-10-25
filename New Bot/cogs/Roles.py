@@ -34,7 +34,7 @@ class Roles(commands.Cog) :
         await user.add_roles(role)
         await ctx.send(f" **{rolename}** Role Had Successfully Given")
 
-    @nextcord.slash_command()
+    @nextcord.slash_command(description="(UNFINISHED)")
     async def button1(self, ctx):
         button = Button(label="Click Me!", style=nextcord.ButtonStyle.blurple)
 
@@ -47,7 +47,7 @@ class Roles(commands.Cog) :
         view.add_item(button)
         await ctx.send("Hi", view=view)
 
-    @nextcord.slash_command()
+    @nextcord.slash_command(description="(UNFINISHED)")
     async def button2(self, ctx):
         button = Button(label="Click Me!", style=nextcord.ButtonStyle.danger)
 
@@ -60,7 +60,7 @@ class Roles(commands.Cog) :
         view.add_item(button)
         await ctx.send("Hi", view=view)
 
-    @nextcord.slash_command()
+    @nextcord.slash_command(description="(UNFINISHED)")
     async def button3(self, ctx):
         button = Button(label="Click Me!", style=nextcord.ButtonStyle.gray)
 
